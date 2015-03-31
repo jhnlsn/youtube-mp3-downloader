@@ -1,42 +1,38 @@
-# YoutubeDownloader
+# Youtube MP3 Downloader
 
-GeoLocateURL is a WebService implemented with NodeJS which takes an URL and returns the URL's IP address, ISO country code and country name and other information if found. It utilizes the MaxMind GeoLite2 Free database available at [http://dev.maxmind.com/geoip/geoip2/geolite2/](http://dev.maxmind.com/geoip/geoip2/geolite2/) for its IP lookups.
+Youtube MP3 Downloader is a module which allows to specify one or multiple YouTube videos from whom the audio data should be extracted, converted to MP3, and stored on disk.
 
 ## Installation
 
 ### Prerequisites
 
-To run this project, a valid install of NodeJS is required. You can check your installation by running `node --version` in your command shell.
+To run this project, you need to have a local installation of FFmpeg present on your system. You can download it from https://www.ffmpeg.org/download.html
 
 ### Checkout the project from Github to a local folder
 
-`git clone git@github.com:tobilg/GeoLocateURL.git`
-
-### Download GeoLite2 Free
-
-Download the database from [http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz](http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz) and unzip the contents to the project's subfolder `db`
+`git clone https://github.com/tobilg/youtube-mp3-downloader.git`
 
 ### Install module dependencies
 
-Navigate to the folder where you checked out the project to in your console. Run `npm install`. The module `maxmind-db-reader` should be installed successfully.
+Navigate to the folder where you checked out the project to in your console. Run `npm install`.
 
-### Run the WebService
+### Running
 
-Navigate to the folder where you checked out the project to in your console. Run `npm start`.
-
-To access the WebService via a browser, use `http://localhost:8080/?url=http://www.google.com`. This will return something like
+A basic usage example is the following:
 
 ```javascript
-{
-    "url": "www.google.com",
-    "ip": "173.194.39.19",
-    "country": "United States",
-    "countryIsoCode": "US",
-    "city": "Mountain View",
-    "subdivision": "California",
-    "location": {
-        "lat": 37.419200000000004,
-        "lng": -122.0574
-    }
-}
+var YoutubeMp3Downloader = require('youtube-mp3-downloader');
+
+//Configure YoutubeMp3Downloader with your settings
+var YD = new YoutubeMp3Downloader({
+    "ffmpegPath": "/path/to/ffmpeg",        //Where is the FFmpeg binary located?
+    "outputPath": "/path/to/mp3/folder",    //Where should the downloaded and encoded files be stored?
+    "youtubeVideoQuality": "highest",       //What video quality should be used?
+    "parallelismFactor": 2                  //How many parallel downloads/encodes should be started?
+});
+
+//Download video and save as MP3 file
+YD.download(["rnkuRQ8tjIE"], function(result) {
+    console.log(result);
+});
 ```

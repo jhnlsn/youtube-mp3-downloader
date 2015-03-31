@@ -1,1 +1,1 @@
-module.exports = require('./lib/YoutubeDownloader');
+module.exports = require('./lib/YoutubeMp3Downloader');
