@@ -36,3 +36,19 @@ YD.download(["rnkuRQ8tjIE"], function(result) {
     console.log(result);
 });
 ```
+
+Upon finish, the following output will be returned:
+
+```javascript
+[
+    {
+        "file": "/path/to/mp3/folder/Nancy Sinatra & Lee Hazlewood - Jackson.mp3",
+        "videoId": "rnkuRQ8tjIE",
+        "youtubeUrl": "http: //www.youtube.com/watch?v=rnkuRQ8tjIE",
+        "videoTitle": "Nancy Sinatra & Lee Hazlewood - Jackson",
+        "artist": "Nancy Sinatra & Lee Hazlewood",
+        "title": "Jackson",
+        "took": 17708
+    }
+]
+```
