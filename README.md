@@ -32,8 +32,8 @@ var YD = new YoutubeMp3Downloader({
 });
 
 //Download video and save as MP3 file
-YD.download(["rnkuRQ8tjIE"], function(result) {
-    console.log(result);
+YD.download(["rnkuRQ8tjIE"], function(err, result) {
+    console.log(err, result);
 });
 ```
 
